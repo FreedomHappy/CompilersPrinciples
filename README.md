@@ -1,7 +1,7 @@
 # CompilersPrinciples
-## 实验
-1. 词法分析器
-2. 语法分析器
+## Experiment
+1. Lexical Analyzer
+2. Syntax Analyzer
 3. 逆波兰式的产生及计算
 
-## 附 PyQt5 Learning
+## Attach PyQt5 Learning
