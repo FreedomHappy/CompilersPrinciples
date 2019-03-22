@@ -42,6 +42,7 @@ a = 10;
 
 
 def Lexical_Analyzer(s):
+    s = s+" "
     pattern1 = r'[a-zA-Z]' # 识别字母
     pattern2 = r'[0-9]' # 识别数字
     output = []

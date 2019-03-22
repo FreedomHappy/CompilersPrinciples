@@ -1,0 +1,2 @@
+pyinstaller -F -w *.py
+pyinstaller  -F -w F:\文件\Pycharmprojects\CompilersPrinciples\execute.py
