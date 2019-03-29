@@ -191,6 +191,8 @@ class Syntactic_Analyzer(object): # 输入一以#结束的符号串
     
     def next_char(self): # self.point + 1 并判断字符串是否结束
         self.point = self.point + 1
+        if self.point == len(self.string):
+            return True
         if self.string[self.point] == '#':
             return True
         else:
