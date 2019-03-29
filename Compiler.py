@@ -14,15 +14,18 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(330, 40, 131, 31))
-        self.pushButton.setObjectName("pushButton")
+        self.lexical_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.lexical_btn.setGeometry(QtCore.QRect(350, 40, 131, 31))
+        self.lexical_btn.setObjectName("lexical_btn")
         self.textEdit_1 = QtWidgets.QTextEdit(self.centralwidget)
         self.textEdit_1.setGeometry(QtCore.QRect(40, 40, 251, 381))
         self.textEdit_1.setObjectName("textEdit_1")
         self.textEdit_2 = QtWidgets.QTextEdit(self.centralwidget)
         self.textEdit_2.setGeometry(QtCore.QRect(530, 40, 251, 381))
         self.textEdit_2.setObjectName("textEdit_2")
+        self.syntactic_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.syntactic_btn.setGeometry(QtCore.QRect(350, 120, 131, 31))
+        self.syntactic_btn.setObjectName("syntactic_btn")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 23))
@@ -33,12 +36,13 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.pushButton.clicked.connect(MainWindow.compile)
+        self.lexical_btn.clicked.connect(MainWindow.lexical_analysis)
+        self.syntactic_btn.clicked.connect(MainWindow.syntactic_analysis)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Compiler"))
-        self.pushButton.setText(_translate("MainWindow", "Compile"))
-
+        self.lexical_btn.setText(_translate("MainWindow", "LexicalAnalyzer"))
+        self.syntactic_btn.setText(_translate("MainWindow", "SyntacticAnalyzer"))
 

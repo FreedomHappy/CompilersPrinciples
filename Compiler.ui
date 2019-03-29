@@ -14,17 +14,17 @@
    <string>Compiler</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="lexical_btn">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>350</x>
       <y>40</y>
       <width>131</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Compile</string>
+     <string>LexicalAnalyzer</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="textEdit_1">
@@ -47,6 +47,19 @@
      </rect>
     </property>
    </widget>
+   <widget class="QPushButton" name="syntactic_btn">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>120</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>SyntacticAnalyzer</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -63,10 +76,10 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>lexical_btn</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>compile()</slot>
+   <slot>lexical_analysis()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>394</x>
@@ -78,8 +91,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>syntactic_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>syntactic_analysis()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>424</x>
+     <y>163</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>456</x>
+     <y>419</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
-  <slot>compile()</slot>
+  <slot>lexical_analysis()</slot>
+  <slot>syntactic_analysis()</slot>
  </slots>
 </ui>
