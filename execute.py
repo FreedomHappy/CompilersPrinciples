@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from Compiler import *
 from LexicalAnalyzer import Lexical_Analyzer
 from LexicalAnalyzer import Syntactic_Analyzer
+from LexicalAnalyzer import LL_1
 
 class MyWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -31,6 +32,11 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             self.textEdit_2.setPlainText(strings+'  right')
         else:
             self.textEdit_2.setPlainText(strings + '  false')
+    def LL1_analysis(self):
+        strings = self.textEdit_1.toPlainText()
+        L = LL_1(strings)
+        result = L.run()
+        self.textEdit_2.setPlainText(result)
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     myWin = MyWindow()

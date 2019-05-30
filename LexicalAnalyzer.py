@@ -199,13 +199,71 @@ class Syntactic_Analyzer(object): # 输入一以#结束的符号串
             return False
 
 
-# In[ ]:
+# 对下列文法，用LL（1）分析法对任意输入的符号串进行分析：
+#（1）E->TG
+#（2）G->+TG|-TG
+#（3）G->ε
+#（4）T->FS
+#（5）S->*FS|/FS
+#（6）S->ε
+#（7）F->(E)
+#（8）F->i
 
+import pandas as pd
+class LL_1:
+    def __init__(self,str):
+        self.table = pd.read_csv('./LL1Table.csv',index_col='char')
+        #print(self.table)
+        #print(self.table.loc['E','('])
+        self.rest_input = list(str)
+        self.rest_input.append('#')
+        self.stack = ['#','E']
+        #print(self.rest_input,self.stack)
+        self.step = 0 # for info_output
+        self.output = pd.DataFrame(columns=['stack','str','generate'])
+        self.output.index.name = 'step'
+    def run(self):
+        continue_flag = 1
+        for idx,input_char in enumerate(self.rest_input):
+            while continue_flag:
+                stack_char = self.stack.pop()
+                if stack_char == input_char and stack_char =='#':
+                    self.info_output(idx, stack_char, 'finish')
+                    break
+                if stack_char == input_char:
+                    self.info_output(idx, stack_char)
+                    break
+                if pd.isna(self.table.loc[stack_char,input_char]):
+                    self.info_output(idx,stack_char,'error')
+                    continue_flag = 0
+                    break
+                elif self.table.loc[stack_char,input_char] == 'empty':
+                    self.info_output(idx,stack_char, self.table.loc[stack_char, input_char])
+                    pass
+                else:
+                    self.info_output(idx,stack_char, self.table.loc[stack_char, input_char])
+                    temple = self.table.loc[stack_char,input_char]
+                    temple = list(temple)[::-1]
+                    for char in temple:self.stack.append(char)
+            continue_flag = 1
+        #print(self.output)
+        return str(self.output)
+
+    def info_output(self,index,stack_char,rightchar=''):
+        self.step = self.step + 1
+        if rightchar != 'error' and rightchar!='finish' and rightchar!='':
+            rightchar = stack_char+'->'+rightchar
+        self.output.loc[self.step] = [''.join(self.stack)+stack_char,''.join(self.rest_input[index:]),rightchar]
 
 if __name__=="__main__":
+    LLStr = 'i+i'
+    L = LL_1(LLStr)
+    s =L.run()
+    print(s)
     #t=Lexical_Analyzer(tests)
     #print(t)
-    synaticAna = Syntactic_Analyzer(input2)
-    result = synaticAna.analysis()
-    print(result)
+    #synaticAna = Syntactic_Analyzer(input2)
+    #result = synaticAna.analysis()
+    #print(result)
+    pass
 

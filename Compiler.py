@@ -26,6 +26,9 @@ class Ui_MainWindow(object):
         self.syntactic_btn = QtWidgets.QPushButton(self.centralwidget)
         self.syntactic_btn.setGeometry(QtCore.QRect(350, 120, 131, 31))
         self.syntactic_btn.setObjectName("syntactic_btn")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(350, 200, 131, 31))
+        self.pushButton.setObjectName("pushButton")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 23))
@@ -38,6 +41,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.lexical_btn.clicked.connect(MainWindow.lexical_analysis)
         self.syntactic_btn.clicked.connect(MainWindow.syntactic_analysis)
+        self.pushButton.clicked.connect(MainWindow.LL1_analysis)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -45,4 +49,5 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Compiler"))
         self.lexical_btn.setText(_translate("MainWindow", "LexicalAnalyzer"))
         self.syntactic_btn.setText(_translate("MainWindow", "SyntacticAnalyzer"))
+        self.pushButton.setText(_translate("MainWindow", "LL（1）"))
 

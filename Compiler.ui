@@ -60,6 +60,19 @@
      <string>SyntacticAnalyzer</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>200</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LL（1）</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -107,9 +120,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>LL1_analysis()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>459</x>
+     <y>236</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>502</x>
+     <y>327</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>lexical_analysis()</slot>
   <slot>syntactic_analysis()</slot>
+  <slot>LL1_analysis()</slot>
  </slots>
 </ui>
