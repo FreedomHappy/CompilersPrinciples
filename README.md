@@ -2,7 +2,8 @@
 ## Experiment
 1. Lexical Analyzer
 2. Syntax Analyzer
-3. 逆波兰式的产生及计算
+3. LL(1) Analyzer
+4. 逆波兰式的产生及计算
 
 ## Principles
 
